@@ -18,6 +18,9 @@ of  character mentions, and to plot these numbers in reference to episode events
 import tweepy
 import datetime
 
+import sys
+sys.path.append('~/Box Sync/GoT_project_and_data/')
+
 from API_keys import kf_API_key, kf_API_secret
 
 API_KEY = kf_API_key
@@ -44,7 +47,7 @@ searchQuery = '#UnbreakableKimmySchmidt'  # this is what we're searching for
 # maxTweets = 10000000 # Some arbitrary large number
 maxTweets = 1000 # Some arbitrary large number
 tweetsPerQry = 100  # this is the max the API permits
-fName = 'unbreakable.txt' # We'll store the tweets in a text file.
+fName = '~/Box Sync/GoT_project_and_data/data/unbreakable2.txt' # We'll store the tweets in a text file.
 
 # 'since' and 'until' parameters can be used to restrict the timeframe of the search
 # Until - Returns tweets created before the given date. Date should be formatted as YYYY-MM-DD.
