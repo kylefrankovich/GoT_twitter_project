@@ -17,14 +17,14 @@ of  character mentions, and to plot these numbers in reference to episode events
 
 import tweepy
 import datetime
+import yaml
+f = open('secrets.yaml')
+# use safe_load instead load
+API_info = yaml.safe_load(f)
 
-import sys
-sys.path.append('~/Box Sync/GoT_project_and_data/')
 
-from API_keys import kf_API_key, kf_API_secret
-
-API_KEY = kf_API_key
-API_SECRET = kf_API_secret
+API_KEY = API_info['key']
+API_SECRET = API_info['secret']
 
 # Replace the API_KEY and API_SECRET with your application's key and secret.
 auth = tweepy.AppAuthHandler(API_KEY, API_SECRET)
