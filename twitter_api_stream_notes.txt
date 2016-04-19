@@ -1,2 +1,17 @@
 game of thrones twitter project
 twitter API streaming notes
+
+
+Filter can specify up to 400 track keywords:
+* Track = keywords to track
+	+ https://dev.twitter.com/streaming/overview/request-parameters#track
+	+ phrases or keywords are specified by a comma-separated list
+	+ commas = "OR" (ex: 'the,twitter' = the OR twitter)
+	+ space = "AND" (ex: 'the twitter' = the AND twitter)
+	+ each phrase must be between 1 and 60 bytes
+	+ exact matching of phrases is not supported 
+	+ case doesn't matter
+	+ punctuation and special characters will be considered part of the term they are adjacent to
+
+
+Potential keywords to track:
