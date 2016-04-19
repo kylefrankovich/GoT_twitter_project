@@ -18,8 +18,10 @@ of  character mentions, and to plot these numbers in reference to episode events
 import tweepy
 import datetime
 
-API_KEY = 'WxrPOgQJRLt2RdLKNakXqZl2T'
-API_SECRET = '7SR9t3xMKTtLx1JaAVgqLvCE627TA5x81juQZoww2w5mydDbL9'
+from API_keys import kf_API_key, kf_API_secret
+
+API_KEY = kf_API_key
+API_SECRET = kf_API_secret
 
 # Replace the API_KEY and API_SECRET with your application's key and secret.
 auth = tweepy.AppAuthHandler(API_KEY, API_SECRET)
