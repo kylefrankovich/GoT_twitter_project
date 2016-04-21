@@ -10,3 +10,20 @@ env EDITOR=nano crontab -e
 48 11 * * * cd /Users/kfranko/Desktop/GoT_twitter_project/ python winter_is_coming.py
 
 # then 'ctrl + 0' to write out, press enter, then 'ctrl+x' to exit
+
+
+# above example not working... let's try specifying the python interpreter path directly
+
+
+25 12 * * * cd /Users/kfranko/Desktop/GoT_twitter_project/ /Users/kfranko/anaconda/bin/python winter_is_coming.py
+
+
+# above still didn't work; looks like I need to add '&&' between changing the directory and running the script
+
+30 13 * * * cd /Users/kfranko/Desktop/GoT_twitter_project/ && python winter_is_coming.py
+
+# apparently it's not using the correct python version... try to specify the path:
+
+44 13 * * * cd /Users/kfranko/Desktop/GoT_twitter_project/ && /Users/kfranko/anaconda/bin/python winter_is_coming.py
+
+# it works! fuck yeah!
