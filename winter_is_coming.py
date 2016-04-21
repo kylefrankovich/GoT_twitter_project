@@ -48,7 +48,8 @@ searchQuery = '#UnbreakableKimmySchmidt'  # this is what we're searching for
 maxTweets = 1000 # Some arbitrary large number
 tweetsPerQry = 100  # this is the max the API permits
 save_path = '/Users/kfranko/Box Sync/GoT_data/data'
-fileName = 'unbreakable3.txt' # We'll store the tweets in a text file.
+datestr = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
+fileName = 'unbreakable_{}.txt'.format(datestr) # We'll store the tweets in a text file.
 fName = os.path.join(save_path, fileName)
 
 # 'since' and 'until' parameters can be used to restrict the timeframe of the search
