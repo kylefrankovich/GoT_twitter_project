@@ -1,0 +1,12 @@
+
+http://crontab-generator.org/ # crontab generator; helps set up crontab jobs
+
+# from terminal, use the following command to edit/create crontab jobs:
+
+env EDITOR=nano crontab -e
+
+# example crontab:
+
+48 11 * * * cd /Users/kfranko/Desktop/GoT_twitter_project/ python winter_is_coming.py
+
+# then 'ctrl + 0' to write out, press enter, then 'ctrl+x' to exit
