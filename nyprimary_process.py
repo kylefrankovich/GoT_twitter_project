@@ -15,6 +15,8 @@ f = '/Users/emilyhalket/Box Sync/GoT_data/data/twitter_stream_test_NYPrimary.txt
 tweets = []
 tweets_file = open(f, "r")
 
+# remember to execute this as a whole block!
+
 for line in tweets_file:
     try:
         tweet = json.loads(line)
