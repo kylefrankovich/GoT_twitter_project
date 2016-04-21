@@ -50,7 +50,9 @@ tweetsPerQry = 100  # this is the max the API permits
 save_path = '/Users/kfranko/Box Sync/GoT_data/data'
 datestr = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
 fileName = 'unbreakable_{}.txt'.format(datestr) # We'll store the tweets in a text file.
+paramFileName = 'script_parameters_{}.txt'.format(datestr) # let's output the parameters used for each search in small text file
 fName = os.path.join(save_path, fileName)
+script_parameters_fName =os.path.join(save_path, paramFileName)
 
 # 'since' and 'until' parameters can be used to restrict the timeframe of the search
 # Until - Returns tweets created before the given date. Date should be formatted as YYYY-MM-DD.
@@ -110,7 +112,23 @@ with open(fName, 'w') as f:
 print ("Downloaded {0} tweets, Saved to {1}".format(tweetCount, fName))
 print '\rscript end time is:', datetime.datetime.now()
 time_stop = datetime.datetime.now()
-print '\rtotal script runtime is:', time_stop - time_start
+total_runtime = time_stop - time_start
+print '\rtotal script runtime is:', total_runtime
+
+# output parameters of the search that was just completed:
+
+text_file = open(script_parameters_fName, "w")
+text_file.writelines(["search query: {0}\n".format(searchQuery),
+                "time start: {0}\n".format(time_start),
+                "time stop: {0}\n".format(time_stop),
+                "total run time: {0}\n".format(total_runtime),
+                "max tweets: {0}\n".format(maxTweets),
+                "output file name: {0}\n".format(fileName),
+                "search from date: {0}\n".format(search_from_date),
+                "search to date: {0}\n".format(search_to_date),
+                "number of tweets: {0}\n".format(tweetCount)]
+)
+text_file.close()
 
 # remaining issues: we need to set a time limit (i.e. search from time episode begins (or before it starts?) to 24 hours after);
 # also, can we automate the script to run on it's own?; ask Nick, perhaps we need to have the script running on a server...
