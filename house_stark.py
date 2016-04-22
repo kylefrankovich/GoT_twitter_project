@@ -10,9 +10,15 @@ import json
 from datetime import datetime
 from pytz import timezone
 
+data_path = '/Users/kfranko/Box Sync/GoT_data/data'
+
+fileName = 'twitter_stream_test_NYPrimary.txt'
+
+fName = os.path.join(data_path, fileName)
+
 # this method works; for explanation, see: http://stackoverflow.com/questions/12451431/loading-and-parsing-a-json-file-in-python
 data = []
-with open('unbreakable.txt') as f:
+with open(fName) as f:
     for line in f:
         data.append(json.loads(line))
 

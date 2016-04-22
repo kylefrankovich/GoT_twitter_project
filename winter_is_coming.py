@@ -117,8 +117,8 @@ print '\rtotal script runtime is:', total_runtime
 
 # output parameters of the search that was just completed:
 
-text_file = open(script_parameters_fName, "w")
-text_file.writelines(["search query: {0}\n".format(searchQuery),
+script_parameters_file = open(script_parameters_fName, "w")
+script_parameters_file.writelines(["search query: {0}\n".format(searchQuery),
                 "time start: {0}\n".format(time_start),
                 "time stop: {0}\n".format(time_stop),
                 "total run time: {0}\n".format(total_runtime),
@@ -128,7 +128,7 @@ text_file.writelines(["search query: {0}\n".format(searchQuery),
                 "search to date: {0}\n".format(search_to_date),
                 "number of tweets: {0}\n".format(tweetCount)]
 )
-text_file.close()
+script_parameters_file.close()
 
 # remaining issues: we need to set a time limit (i.e. search from time episode begins (or before it starts?) to 24 hours after);
 # also, can we automate the script to run on it's own?; ask Nick, perhaps we need to have the script running on a server...
