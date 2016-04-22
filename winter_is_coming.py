@@ -43,13 +43,13 @@ import jsonpickle
 import os
 
 # searchQuery = '#someHashtag'  # this is what we're searching for
-searchQuery = '#UnbreakableKimmySchmidt'  # this is what we're searching for
+searchQuery = '#EarthDay'  # this is what we're searching for
 # maxTweets = 10000000 # Some arbitrary large number
 maxTweets = 1000 # Some arbitrary large number
 tweetsPerQry = 100  # this is the max the API permits
 save_path = '/Users/kfranko/Box Sync/GoT_data/data'
 datestr = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
-fileName = 'unbreakable_{}.txt'.format(datestr) # We'll store the tweets in a text file.
+fileName = 'earthday_{}.txt'.format(datestr) # We'll store the tweets in a text file.
 paramFileName = 'script_parameters_{}.txt'.format(datestr) # let's output the parameters used for each search in small text file
 fName = os.path.join(save_path, fileName)
 script_parameters_fName =os.path.join(save_path, paramFileName)
