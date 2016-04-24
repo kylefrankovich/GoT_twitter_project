@@ -23,8 +23,8 @@ f = open('secrets.yaml')
 API_info = yaml.safe_load(f)
 
 
-API_KEY = API_info['key']
-API_SECRET = API_info['secret']
+API_KEY = API_info['consumer_key']
+API_SECRET = API_info['consumer_secret']
 
 # Replace the API_KEY and API_SECRET with your application's key and secret.
 auth = tweepy.AppAuthHandler(API_KEY, API_SECRET)
