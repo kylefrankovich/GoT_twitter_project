@@ -27,3 +27,8 @@ env EDITOR=nano crontab -e
 44 13 * * * cd /Users/kfranko/Desktop/GoT_twitter_project/ && /Users/kfranko/anaconda/bin/python winter_is_coming.py
 
 # it works! fuck yeah!
+
+# 4/23/16 note:
+
+# with above solution, script runs when not logged in; however, script will NOT run when computer is asleep;
+# need to set a scheduled "wake up" from mac preferences for the minute or so before crontab job
