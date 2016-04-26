@@ -14,16 +14,9 @@ import os
 
 data_path = '/Users/kfranko/Box Sync/GoT_data/data'
 
-fileName = 'GoT_test_2016_04_26-13_00_01.txt'
+fileName = 'GoT_test_2016_04_26-13_16_01.txt'
 
 fName = os.path.join(data_path, fileName)
-
-# this method works for search data structure; for explanation, see: http://stackoverflow.com/questions/12451431/loading-and-parsing-a-json-file-in-python
-data = []
-with open(fName) as f:
-    for line in f:
-        data.append(json.loads(line)) # makes a list of dictionaries
-
 
 # try stream method on search tweets (it works)
 
@@ -39,6 +32,11 @@ for line in tweets_file:
     except:
         pass
 print 'tweets loaded, yo'
+
+len(tweets_search)
+
+tweets_search[999]['text']
+tweets_search[999]['created_at']
 
 
 # load stream data:
