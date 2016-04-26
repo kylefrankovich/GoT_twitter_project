@@ -12,10 +12,10 @@ from nltk.corpus import stopwords
 import string
 from nltk import bigrams
 import datetime
-
+import os
 
 data_path = '/Users/kfranko/Box Sync/GoT_data/data'
-fileName = 'unbreakable3.txt'
+fileName = 'kf_GoT_stream_04_24_16.txt'
 fName = os.path.join(data_path, fileName)
 save_path = '/Users/kfranko/Box Sync/GoT_data/data'
 datestr = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
@@ -27,6 +27,8 @@ counter_output_file_fName = os.path.join(save_path, countFileOutName)
 
 tweets_search = []
 tweets_file = open(fName, "r")
+
+f = open(fName, "r")
 
 # remember to execute this as a whole block!
 

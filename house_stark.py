@@ -14,7 +14,7 @@ import os
 
 data_path = '/Users/kfranko/Box Sync/GoT_data/data'
 
-fileName = 'unbreakable3.txt'
+fileName = 'kf_stream_test.txt'
 
 fName = os.path.join(data_path, fileName)
 

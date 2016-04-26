@@ -43,7 +43,7 @@ import jsonpickle
 import os
 
 # searchQuery = '#someHashtag'  # this is what we're searching for
-searchQuery = '#EarthDay'  # this is what we're searching for
+searchQuery = '#gameofthrones'  # this is what we're searching for
 # maxTweets = 10000000 # Some arbitrary large number
 maxTweets = 1000 # Some arbitrary large number
 tweetsPerQry = 100  # this is the max the API permits
