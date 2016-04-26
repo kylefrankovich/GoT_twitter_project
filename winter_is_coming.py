@@ -43,7 +43,7 @@ import jsonpickle
 import os
 
 # searchQuery = '#someHashtag'  # this is what we're searching for
-searchQuery = '#gameofthrones'  # this is what we're searching for
+searchQuery = '#gameofthrones'  # this is what we're searching for (search API is not case sensitive)
 # maxTweets = 10000000 # Some arbitrary large number
 maxTweets = 1000 # Some arbitrary large number
 tweetsPerQry = 100  # this is the max the API permits
@@ -62,9 +62,9 @@ script_parameters_fName =os.path.join(save_path, paramFileName)
 
 # last democratic debate was held on Thursday, April 14
 
-search_from_date = None
+search_from_date = '2016-04-24'
 
-search_to_date = None
+search_to_date = '2016-04-25'
 
 # If results from a specific ID onwards are reqd, set since_id to that ID.
 # else default to no lower limit, go as far back as API allows
