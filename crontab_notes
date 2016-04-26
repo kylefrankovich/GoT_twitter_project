@@ -38,3 +38,7 @@ env EDITOR=nano crontab -e
 python stream_GoT_kf.py > /Users/kfranko/Box\ Sync/GoT_data/data/kf_stream_test.txt
 
 44 13 * * * cd /Users/kfranko/Desktop/GoT_twitter_project/ && /Users/kfranko/anaconda/bin/python stream_GoT_kf.py > /Users/kfranko/Box\ Sync/GoT_data/data/kf_stream_test.txt
+
+# try adding a kill line to shut down stream:
+
+46 13 * * * cd /Users/kfranko/Desktop/GoT_twitter_project/ && /Users/kfranko/anaconda/bin/python killall -9 script.py

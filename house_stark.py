@@ -8,22 +8,73 @@ from pprint import pprint
 
 import json
 from datetime import datetime
+import time
 from pytz import timezone
 import os
 
 data_path = '/Users/kfranko/Box Sync/GoT_data/data'
 
-fileName = 'earthday_2016_04_23-17_36_00.txt'
+fileName = 'unbreakable3.txt'
 
 fName = os.path.join(data_path, fileName)
 
-# this method works; for explanation, see: http://stackoverflow.com/questions/12451431/loading-and-parsing-a-json-file-in-python
+# this method works for search data structure; for explanation, see: http://stackoverflow.com/questions/12451431/loading-and-parsing-a-json-file-in-python
 data = []
 with open(fName) as f:
     for line in f:
         data.append(json.loads(line)) # makes a list of dictionaries
 
+
+# try stream method on search tweets (it works)
+
+tweets_search = []
+tweets_file = open(fName, "r")
+
+# remember to execute this as a whole block!
+
+for line in tweets_file:
+    try:
+        tweet = json.loads(line)
+        tweets_search.append(tweet)
+    except:
+        pass
+print 'tweets loaded, yo'
+
+
+# load stream data:
+
+tweets = []
+tweets_file = open(fName, "r")
+
+# remember to execute this as a whole block!
+
+for line in tweets_file:
+    try:
+        tweet = json.loads(line)
+        tweets.append(tweet)
+    except:
+        pass
+    print 'tweets loaded, yo'
+
 len(data)
+
+len(tweets) # 384,543 tweets from 4/24 premiere episode; streamed from just before 9PM eastern
+# (~5:45 pacific/00:45 UTC) until 11PM eastern (~8:00 pacific/03:00 UTC); NB: tweet times are in UTC, which is 7
+# hours ahead of pacific
+
+tweets[384542]['text']
+
+tweets[384542]['created_at']
+
+# try to convert twitter date to a timestamp:
+
+tweet = tweets[0]
+# this works using 'import time' not 'from date time import time'
+ts = time.strftime('%Y-%m-%d %H:%M:%S', time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y'))
+# only hour/minute/second
+ts = time.strftime('%H:%M:%S', time.strptime(tweet['created_at'],'%a %b %d %H:%M:%S +0000 %Y'))
+
+
 
 data[0]['text']
 
@@ -64,3 +115,45 @@ def extract_text(input_data):
 
 
 extract_text(data)
+
+
+
+customers = [{"uid":1,"name":"John"},
+    {"uid":2,"name":"Smith"},
+           {"uid":3,"name":"Andersson"},
+            ]
+
+print customers
+
+for x in customers:
+    print x["uid"], x["name"]
+
+
+empty_list = []
+
+for x in customers:
+    empty_list.append({'test':x['name']})
+
+
+# create a list of dictionaries; only include 'text' and 'created at' fields:
+
+tweet_text_time = []
+
+for x in tweets_search:
+    tweet_text_time.append({'text':x['text'], 'timestamp':x['created_at']})
+
+
+
+# start playing around with text processing:
+
+# Import BeautifulSoup into your workspace
+from bs4 import BeautifulSoup
+
+# Initialize the BeautifulSoup object on a single movie review
+example1 = BeautifulSoup(tweet_text_time[0]['text'])
+
+# Print the raw review and then the output of get_text(), for
+# comparison
+print tweet_text_time[0]['text']
+print example1.get_text()
+
