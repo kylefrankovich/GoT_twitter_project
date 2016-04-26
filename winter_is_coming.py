@@ -62,9 +62,9 @@ script_parameters_fName =os.path.join(save_path, paramFileName)
 
 # last democratic debate was held on Thursday, April 14
 
-search_from_date = '2016-04-24'
+search_from_date = '2016-04-20'
 
-search_to_date = '2016-04-25'
+search_to_date = '2016-04-21'
 
 # If results from a specific ID onwards are reqd, set since_id to that ID.
 # else default to no lower limit, go as far back as API allows
@@ -102,14 +102,14 @@ with open(fName, 'w') as f:
                 f.write(jsonpickle.encode(tweet._json, unpicklable=False) +
                         '\n')
             tweetCount += len(new_tweets)
-            print("Downloaded {0} tweets".format(tweetCount))
+            #print("Downloaded {0} tweets".format(tweetCount)) # suppress this when downloading a billion tweets...
             max_id = new_tweets[-1].id
         except tweepy.TweepError as e:
             # Just exit if any error
             print("some error : " + str(e))
             break
 
-print ("Downloaded {0} tweets, Saved to {1}".format(tweetCount, fName))
+print ("\rDownloaded {0} tweets, Saved to {1}".format(tweetCount, fName))
 print '\rscript end time is:', datetime.datetime.now()
 time_stop = datetime.datetime.now()
 total_runtime = time_stop - time_start

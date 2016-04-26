@@ -14,7 +14,7 @@ import os
 
 data_path = '/Users/kfranko/Box Sync/GoT_data/data'
 
-fileName = 'GoT_test_2016_04_26-12_41_05.txt'
+fileName = 'GoT_test_2016_04_26-13_00_01.txt'
 
 fName = os.path.join(data_path, fileName)
 
