@@ -15,11 +15,11 @@ import datetime
 import os
 
 data_path = '/Users/kfranko/Box Sync/GoT_data/data'
-fileName = 'kf_GoT_stream_04_24_16.txt'
+fileName = 'GoT_search_ep1_2016_04_26-17_00_06.txt'
 fName = os.path.join(data_path, fileName)
 save_path = '/Users/kfranko/Box Sync/GoT_data/data'
 datestr = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
-countFileOutName = 'name_counts_ep1{}.txt'.format(datestr)
+countFileOutName = 'GoT_name_counts_ep1_24_hrs_{}.txt'.format(datestr)
 counter_output_file_fName = os.path.join(save_path, countFileOutName)
 
 
@@ -149,9 +149,32 @@ character_names = ['tyrion', 'snow', 'arya', 'daenerys', 'sansa', 'cersei', 'jof
                    'hound', 'bran', 'khal', 'drogo', 'khaleesi']
 
 
-for name in character_names:
-    print name, count_all_terms_stop[name]
 
+# add name and count to a dictionary:
+dict = {}
+for name in character_names:
+    #print name, count_all_terms_stop[name]
+    dict[name] = count_all_terms_stop[name]
+
+# write dictionary with name counts to file:
+
+json.dump(dict, open(counter_output_file_fName,'w'))
+
+
+# write dictionary to csv for importing into R:
+
+import csv
+
+my_dict = dict
+
+names_csv = '/Users/kfranko/Box Sync/GoT_data/data/GoT_name_counts_ep1_24_hrs.csv'
+
+with open(names_csv, 'wb') as f:  # Just use 'w' mode in 3.x
+    w = csv.DictWriter(f, my_dict.keys())
+    w.writeheader()
+    w.writerow(my_dict)
+
+# load dictionary back in: d2 = json.load(open("text.txt"))
 
 
 # this works, will only print out "name value":
@@ -159,14 +182,6 @@ with open(counter_output_file_fName, 'w') as f:
     for name in character_names:
         f.write( "{} {}\n".format(name,count_all_terms_stop[name]) )
 
-
-
-
-# test print out results of counter:
-# also works, but need to make sure it's working properly
-import pickle
-with open(counter_output_file_fName, 'wb') as outputfile:
-    pickle.dump(count_all_terms_stop, outputfile)
 
 
 script_parameters_file = open(script_parameters_fName, "w")
@@ -181,4 +196,6 @@ with open(counter_output_file_fName, 'w') as f:
 # when a counter object is populated, values are retrieved using dictionary API
 # (ex: count_all_terms_stop['#unbreakablekimmyschmidt'])
 
+
+#### plotting! ####
 

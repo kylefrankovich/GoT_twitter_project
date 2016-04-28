@@ -14,7 +14,7 @@ import os
 
 data_path = '/Users/kfranko/Box Sync/GoT_data/data'
 
-fileName = 'GoT_test_2016_04_26-13_16_01.txt'
+fileName = 'name_counts_test2016_04_25-16_38_08.txt'
 
 fName = os.path.join(data_path, fileName)
 
@@ -155,3 +155,9 @@ example1 = BeautifulSoup(tweet_text_time[0]['text'])
 print tweet_text_time[0]['text']
 print example1.get_text()
 
+
+
+# load name counts:
+
+f = open(fName, 'r')
+x = f.readlines()
