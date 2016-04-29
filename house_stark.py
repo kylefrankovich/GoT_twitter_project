@@ -14,7 +14,7 @@ import os
 
 data_path = '/Users/kfranko/Box Sync/GoT_data/data'
 
-fileName = 'name_counts_test2016_04_25-16_38_08.txt'
+fileName = 'kf_stream_test.txt'
 
 fName = os.path.join(data_path, fileName)
 
@@ -128,9 +128,9 @@ for x in customers:
 
 
 empty_list = []
-
+# create a dictionary of two items that we'll want (ex: tweet text and tweet time)
 for x in customers:
-    empty_list.append({'test':x['name']})
+    empty_list.append({'name':x['name'], 'UID':x['uid']})
 
 
 # create a list of dictionaries; only include 'text' and 'created at' fields:
