@@ -12,7 +12,7 @@ import time
 from pytz import timezone
 import os
 
-data_path = '/Users/kfranko/Box Sync/GoT_data/data'
+data_path = '/Users/kfranko/Box Sync/GoT_data/data/test_files'
 
 fileName = 'kf_stream_test.txt'
 

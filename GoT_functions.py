@@ -1,14 +1,21 @@
 __author__ = 'kfranko'
 
+import json
+
 
 def tweet_loader(input_file):
     # here we add our basic method for loading tweets from the list of json objects
-    for line in input_file:
+    tweets = [] # create storage variable
+    tweets_file = open(input_file, "r")
+    for line in tweets_file:
         try:
             tweet = json.loads(line)
             tweets.append(tweet)
         except:
             pass
+    print 'tweets loaded, yo'
+    return tweets
+
 
 # x is a function that loads in raw twitter data, which is a list of json objects that contain information
 # about each tweet (user profile, geo information, likes, RTs, etc... for now, we're only interested in
