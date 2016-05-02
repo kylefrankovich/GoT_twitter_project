@@ -1,34 +1,32 @@
 __author__ = 'kfranko'
 
 
+file_to_load = '/Users/kfranko/Box Sync/GoT_data/data/test_files/earthday_2016_04_23-17_36_00.txt'
 
-count_all_terms_stop = Counter()
-count_all_hash = Counter()
-count_all_terms_only = Counter()
-for line in f:
-    tweet = json.loads(line)
-    # Create a list with all the terms
-    # terms_all = [term for term in preprocess(tweet['text'])]
-    terms_stop = [term for term in preprocess(tweet['text'], lowercase=True) if term not in stop]
-    # terms_bigram = bigrams(terms_stop) # bigrams: sequences of two terms
-    # Count terms only once, equivalent to Document Frequency
-    # terms_single = set(terms_all)
-    # Count hashtags only
-    terms_hash = [term for term in preprocess(tweet['text'], lowercase=True)
-            if term.startswith('#')]
-    # Count terms only (no hashtags, no mentions)
-    terms_only = [term for term in preprocess(tweet['text'], lowercase=True)
-            if term not in stop and
-            not term.startswith(('#', '@'))]
-            # mind the ((double brackets))
-            # startswith() takes a tuple (not a list) if
-            # we pass a list of inputs
-    # Update the counter(s)
-    count_all_terms_stop.update(terms_stop)
-    count_all_hash.update(terms_hash)
-    count_all_terms_only.update(terms_only)
-# Print the first 5 most frequent words
-print 'preprocessing/counting term frequency complete!'
-print 'most common w/ stops removed:', (count_all_terms_stop.most_common(5))
-print 'most hashtags:', (count_all_hash.most_common(5))
-print 'most terms_only:', (count_all_terms_only.most_common(5))
+from GoT_functions import tweet_loader
+
+test_load_data = tweet_loader(file_to_load)
+
+test_load_data[0]['text'] # it works!
+
+len(test_load_data)
+
+# now let's test the tweet reducer:
+
+from GoT_functions import tweet_reducer
+
+tweet_reducer(file_to_load, '1', 'search', 'kfranko')
+
+# now try reading in the reduced file using tweet_loader:
+
+reduced_file_to_load = '/Users/kfranko/Box Sync/GoT_data/data/episode_1/kfranko_ep_1_search.txt'
+
+test_load_data_reduced = tweet_loader(reduced_file_to_load)
+
+len(test_load_data_reduced)
+
+test_load_data_reduced[0][0]
+test_load_data_reduced[0][0]['text']
+
+
+
