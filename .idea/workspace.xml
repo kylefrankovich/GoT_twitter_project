@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c97a75ee-0304-4753-8bd4-d045403881bd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GoT_functions.py" afterPath="$PROJECT_DIR$/GoT_functions.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blah.py" afterPath="$PROJECT_DIR$/blah.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="GoT_twitter_project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,8 +38,8 @@
       <file leaf-file-name="GoT_functions.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GoT_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60150373">
-              <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.5864662">
+              <caret line="28" column="87" selection-start-line="28" selection-start-column="87" selection-end-line="28" selection-end-column="87" />
               <folding />
             </state>
           </provider>
@@ -75,7 +73,7 @@
         <entry file="file://$PROJECT_DIR$/blah.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -135,8 +133,8 @@
         <option value="$PROJECT_DIR$/winter_is_coming.py" />
         <option value="$PROJECT_DIR$/house_stark.py" />
         <option value="$PROJECT_DIR$/tweet_pre_processing_old_gods_and_new.py" />
-        <option value="$PROJECT_DIR$/GoT_functions.py" />
         <option value="$PROJECT_DIR$/blah.py" />
+        <option value="$PROJECT_DIR$/GoT_functions.py" />
       </list>
     </option>
   </component>
@@ -796,14 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blah.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/house_stark.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -814,10 +804,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/blah.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GoT_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60150373">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.5864662">
+          <caret line="28" column="87" selection-start-line="28" selection-start-column="87" selection-end-line="28" selection-end-column="87" />
           <folding />
         </state>
       </provider>
