@@ -5,7 +5,7 @@ import json
 
 def tweet_loader(input_file):
     # here we add our basic method for loading tweets from the list of json objects
-    tweets = [] # create storage variable
+    tweets = []  # create storage variable
     tweets_file = open(input_file, "r")
     for line in tweets_file:
         try:
