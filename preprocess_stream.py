@@ -12,12 +12,12 @@ import string
 import datetime
 import os
 import csv
-import pandas as pd
 import re
+import pandas as pd
+
+
 '''
-
     handle emoticons & punctuation
-
 '''
 
 
@@ -57,68 +57,63 @@ def preprocess(s, lowercase=False):
     return tokens
 
 
-def preprocess_character_counts(episode, username, datatype):
+def preprocess_character_counts(episode, username, search_type, data_collector):
 
     # episode = episode number, points to folder where reduced data file lives
     # username = emilyhalket or kfranko
-    # datatype = search or stream
+    # search_type = search or stream
+    # data_collector = emily or kyle
 
-    '''
+    """
     Set filename and path
-    '''
-    data_path = '/Users/emilyhalket/Box Sync/GoT_data/data/' + episode
-    file_name = username + '_' + episode + '_' + datatype + '.txt'
+    """
+
+    data_path = '/Users/{}/Box Sync/GoT_data/data/'.format(username)
+    file_name = 'episode_{}/ep_{}_{}_{}.txt'.format(episode, episode, data_collector, search_type)
     f = os.path.join(data_path, file_name)
-    save_path = '/Users/' + username + '/Box Sync/GoT_data/data/' + episode
     date_string = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
-    count_file_out_name = 'GoT_name_counts_{}.txt'.format(date_string)
-    # counter_output_file_fName = os.path.join(save_path, count_file_out_name)
     punctuation = list(string.punctuation)
     stop = stopwords.words('english') + punctuation + ['rt', 'via']
 
     '''
-
     read in file of raw tweet data
-
     '''
 
-    with open(f, 'r') as tweets_file:
-        count_all_terms_stop = Counter()
-        count_all_hash = Counter()
-        count_all_terms_only = Counter()
-        for line in tweets_file:
-            try:
-                tweet = json.loads(line)
+    tweets_file = open(f).read()
+    tweet_list = json.loads(tweets_file)
+    count_all_terms_stop = Counter()
+    count_all_hash = Counter()
+    count_all_terms_only = Counter()
 
-                terms_stop = [term for term in preprocess(tweet['text'],
-                                                          lowercase=True) if term not in stop]
-                # Count hash tags only
-                terms_hash = [term for term in preprocess(tweet['text'],
-                                                          lowercase=True)
-                              if term.startswith('#')]
-                # Count terms only (no hash tags, no mentions)
-                terms_only = [term for term in preprocess(tweet['text'],
-                                                          lowercase=True) if term not in stop and
-                              not term.startswith(('#', '@'))]
-                # Update the counter(s)
-                count_all_terms_stop.update(terms_stop)
-                count_all_hash.update(terms_hash)
-                count_all_terms_only.update(terms_only)
-            except:
-                pass
-        # Print the first 5 most frequent words
-        print 'pre processing/counting term frequency complete!'
-        print 'most common w/ stops removed:', (count_all_terms_stop.most_common(5))
-        print 'most hash tags:', (count_all_hash.most_common(5))
-        print 'most terms_only:', (count_all_terms_only.most_common(5))
+    for tweet in tweet_list:
+
+        terms_stop = [term for term in preprocess(tweet['text'],
+                                                  lowercase=True) if term not in stop]
+        # Count hash tags only
+        terms_hash = [term for term in preprocess(tweet['text'],
+                                                  lowercase=True)
+                      if term.startswith('#')]
+        # Count terms only (no hash tags, no mentions)
+        terms_only = [term for term in preprocess(tweet['text'],
+                                                  lowercase=True) if term not in stop and
+                      not term.startswith(('#', '@'))]
+        # Update the counter(s)
+        count_all_terms_stop.update(terms_stop)
+        count_all_hash.update(terms_hash)
+        count_all_terms_only.update(terms_only)
+
+    # Print the first 5 most frequent words
+    print 'pre processing/counting term frequency complete!'
+    print 'most common w/ stops removed:', (count_all_terms_stop.most_common(5))
+    print 'most hash tags:', (count_all_hash.most_common(5))
+    print 'most terms_only:', (count_all_terms_only.most_common(5))
 
     '''
     count character names
     '''
 
     char_file = 'character_names_library.csv'
-    name_path = '/Users/' + username + '/Box Sync/GoT_data/data/'
-    cf = os.path.join(name_path, char_file)
+    cf = os.path.join(data_path, char_file)
 
     char_names = pd.read_csv(cf)['name_to_match']
 
@@ -126,8 +121,9 @@ def preprocess_character_counts(episode, username, datatype):
     for name in char_names:
         name_dict[name] = count_all_terms_stop[name]
 
-    names_csv = '/Users/' + username + '/Box Sync/GoT_data/data/GoT_' + username +\
-                '_' + datatype + 'name_counts.csv'
+    names_csv = '/Users/{}/Box Sync/GoT_data/data/episode_{}/{}_GoT_ep{}_{}_name_counts{}.csv'.format(
+        username, episode, data_collector, episode, search_type, date_string
+    )
 
     with open(names_csv, 'wb') as f:  # Just use 'w' mode in 3.x
         w = csv.DictWriter(f, name_dict.keys())
