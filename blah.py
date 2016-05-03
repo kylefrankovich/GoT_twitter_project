@@ -30,3 +30,30 @@ test_load_data_reduced[0][0]['text']
 
 
 
+# try making a small list of twitter data to figure out the indexing issue:
+
+test_load_data[0]['text'] # it works!
+
+range(2)
+
+empty_list = []
+# create a dictionary of two items that we'll want (ex: tweet text and tweet time)
+for x in range(2):
+    empty_list.append({'text':test_load_data[x]['text'], 'created_at':test_load_data[x]['created_at']})
+
+
+test_output_fname = '/Users/kfranko/Desktop/empty_list_test_output.txt'
+json.dump(empty_list, open(test_output_fname,'w'))
+
+test_load_empty_list = tweet_loader(test_output_fname) # this causes the same weird indexing issue with the output of reducer
+
+# weird indexing due to tweet_loader reading in a list [{},{},{}] into another empty list
+
+#### indexing issue solved ####
+
+data_test = test_load_empty_list[0] # do this when loading in reduced data in order to index normally:
+
+data_test[0]
+
+for tweet in data_test:
+    print tweet['created_at']

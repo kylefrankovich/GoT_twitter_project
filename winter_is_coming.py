@@ -49,8 +49,8 @@ maxTweets = 1000000 # Some arbitrary large number
 tweetsPerQry = 100  # this is the max the API permits
 save_path = '/Users/kfranko/Box Sync/GoT_data/data'
 datestr = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
-fileName = 'GoT_search_ep1_prev_24_hrs_{}.txt'.format(datestr) # We'll store the tweets in a text file.
-paramFileName = 'GoT_search_ep1_prev_24_hrs_script_parameters_{}.txt'.format(datestr) # let's output the parameters used for each search in small text file
+fileName = 'GoT_search_ep1_next_24_hrs_{}.txt'.format(datestr) # We'll store the tweets in a text file.
+paramFileName = 'GoT_search_ep1_next_24_hrs_script_parameters_{}.txt'.format(datestr) # let's output the parameters used for each search in small text file
 fName = os.path.join(save_path, fileName)
 script_parameters_fName =os.path.join(save_path, paramFileName)
 
@@ -62,9 +62,9 @@ script_parameters_fName =os.path.join(save_path, paramFileName)
 
 # last democratic debate was held on Thursday, April 14
 
-search_from_date = '2016-04-23'
+search_from_date = '2016-04-25'
 
-search_to_date = '2016-04-24' # will search up to beginning (midnight) of this date
+search_to_date = '2016-04-26' # will search up to beginning (midnight) of this date
 
 # If results from a specific ID onwards are reqd, set since_id to that ID.
 # else default to no lower limit, go as far back as API allows
