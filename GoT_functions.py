@@ -23,7 +23,11 @@ def tweet_loader(input_file):
 # series analysis)
 
 def tweet_reducer(input_file, episode_number, search_type, user_name, data_collector):
-    output_file_name = '/Users/{}/Box Sync/GoT_data/data/episode_{}/ep_{}_{}_{}.txt'.format(user_name,episode_number,episode_number,data_collector,search_type)
+    output_file_name = '/Users/{}/Box Sync/GoT_data/data/episode_{}/ep_{}_{}_{}.txt'.format(user_name,
+                                                                                            episode_number,
+                                                                                            episode_number,
+                                                                                            data_collector,
+                                                                                            search_type)
     raw_data = tweet_loader(input_file)  # use tweet_loader function to load in raw data
     reduced_tweets = []
     # create a dictionary of two items that we'll want (ex: tweet text and tweet time):
