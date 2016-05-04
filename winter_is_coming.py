@@ -62,9 +62,9 @@ script_parameters_fName =os.path.join(save_path, paramFileName)
 
 # last democratic debate was held on Thursday, April 14
 
-search_from_date = '2016-04-25'
+search_from_date = '2016-05-01'
 
-search_to_date = '2016-04-26' # will search up to beginning (midnight) of this date
+search_to_date = '2016-05-03' # will search up to beginning (midnight) of this date
 
 # If results from a specific ID onwards are reqd, set since_id to that ID.
 # else default to no lower limit, go as far back as API allows
