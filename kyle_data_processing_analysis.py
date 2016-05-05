@@ -4,7 +4,7 @@ import os
 
 data_path = '/Users/kfranko/Box Sync/GoT_data/data/episode_1'
 
-fileName = 'ep_1_kyle_search.txt'
+fileName = 'GoT_tweet_stream_ep1_emily_04242016.txt'
 
 fName = os.path.join(data_path, fileName)
 
@@ -29,3 +29,6 @@ search_type = 'stream'
 data_collector = 'kyle'
 
 preprocess_character_counts(ep_num,user_name,search_type,data_collector)
+
+
+tweet_reducer(fName, 1, 'stream', 'kfranko', 'emily')
