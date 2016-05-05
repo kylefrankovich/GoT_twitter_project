@@ -171,12 +171,13 @@ def preprocess_character_counts(episode, username, search_type, data_collector):
 
     name_dict = {}
     for name in char_names:
-        name_dict[name] = count_all_terms_stop[name]
+        name_dict[name] = count_all_terms_stop[name] + count_all_terms_stop['#' + name]
+        # need to make it so that both 'arya' and '#arya' are counted as 'arya'
 
     names_csv = '/Users/{}/Box Sync/GoT_data/data/episode_{}/{}_GoT_ep{}_{}_name_counts{}.csv'.format(
         username, episode, data_collector, episode, search_type, date_string)
 
-    with open(names_csv, 'wb') as f:  
+    with open(names_csv, 'wb') as f:
         w = csv.DictWriter(f, name_dict.keys())
         w.writeheader()
         w.writerow(name_dict)
