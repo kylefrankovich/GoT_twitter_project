@@ -23,14 +23,9 @@ len(episode_1_search_tweets[0])
 
 from GoT_functions import preprocess_character_counts
 
-ep_num = '1'
+ep_num = '2'
 user_name = 'kfranko'
-search_type = 'stream'
-data_collector = 'emily'
-
-preprocess_character_counts(ep_num,user_name,search_type,data_collector)
-
-
-tweet_reducer(fName, 1, 'stream', 'kfranko', 'emily')
+search_type = 'search_48_hrs'
+data_collector = 'kyle'
 
 preprocess_character_counts(ep_num,user_name,search_type,data_collector)
