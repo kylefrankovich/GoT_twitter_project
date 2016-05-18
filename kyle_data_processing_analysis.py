@@ -23,7 +23,7 @@ len(episode_1_search_tweets[0])
 
 from GoT_functions import preprocess_character_counts
 
-ep_num = '2'
+ep_num = '4'
 user_name = 'kfranko'
 search_type = 'search_48_hrs'
 data_collector = 'kyle'
