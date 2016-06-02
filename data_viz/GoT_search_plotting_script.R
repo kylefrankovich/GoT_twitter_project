@@ -71,6 +71,7 @@ episodes_1_5_plot$xAxis(title = list(text = "episode"),
 # women.of.thrones.line.rcharts$xAxis(minorTicknterval = 'null')
 episodes_1_5_plot$plotOptions(series = list(lineWidth = 4))
 
+episodes_1_5_plot$save('character_counts_eps1_5_above_5_percent.html','iframesrc', cdn=TRUE)
 
 
 
