@@ -2,16 +2,16 @@ __author__ = 'kfranko'
 
 import os
 
-data_path = '/Users/kfranko/Box Sync/GoT_data/data/episode_5'
+data_path = '/Users/kfranko/Box Sync/GoT_data/data/episode_6'
 
-fileName = 'GoT_search_ep5_48_hrs_2016_05_24-18_00_05.txt'
+fileName = 'GoT_search_ep6_48_hrs_2016_06_03-00_34_26.txt'
 
 fName = os.path.join(data_path, fileName)
 
 from GoT_functions import tweet_loader, tweet_reducer
 
 
-tweet_reducer(fName, '5', 'search_48_hrs', 'kfranko', 'kyle')
+tweet_reducer(fName, '6', 'search_48_hrs', 'kfranko', 'kyle')
 
 
 episode_1_search_tweets = tweet_loader(fName)
@@ -23,7 +23,7 @@ len(episode_1_search_tweets[0])
 
 from GoT_functions import preprocess_character_counts
 
-ep_num = '5'
+ep_num = '6'
 user_name = 'kfranko'
 search_type = 'search_48_hrs'
 data_collector = 'kyle'
