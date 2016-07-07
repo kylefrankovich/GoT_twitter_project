@@ -71,7 +71,8 @@ episodes_1_5_plot$xAxis(title = list(text = "episode"),
 # women.of.thrones.line.rcharts$xAxis(minorTicknterval = 'null')
 episodes_1_5_plot$plotOptions(series = list(lineWidth = 4))
 
-episodes_1_5_plot$save('character_counts_eps1_5_above_5_percent.html','iframesrc', cdn=TRUE)
+episodes_1_5_plot$save('character_counts_eps1_5_above_5_percent.html',
+                       'iframesrc', cdn=TRUE)
 
 
 
@@ -141,7 +142,8 @@ ggplotly(characters_of_interest_line_plot)
 
 # women of thrones line plot:
 
-character_list = c('brienne', 'sansa', 'daenerys', 'melisandre', 'cersei', 'margaery', 'arya')
+character_list = c('brienne', 'sansa', 'daenerys',
+                   'melisandre', 'cersei', 'margaery', 'arya')
 df_women_of_thrones = filter(df, names %in% character_list)
 
 
@@ -183,7 +185,9 @@ women.of.thrones.line.rcharts$plotOptions(series = list(lineWidth = 4))
 # line.rcharts$print(include_assets=TRUE)
 # Use this with jekyll blog
 women.of.thrones.line.rcharts$show('iframesrc', cdn=TRUE)
-women.of.thrones.line.rcharts$save('GoT_women_of_thrones_plot_v2_eps1_5.html','iframesrc', cdn=TRUE)
+women.of.thrones.line.rcharts$save('GoT_women_of_thrones_plot_v2_eps1_5.html',
+                                   'iframesrc', 
+                                   cdn=TRUE)
 
 # try methond from here: https://github.com/ramnathv/rCharts/issues/548
 

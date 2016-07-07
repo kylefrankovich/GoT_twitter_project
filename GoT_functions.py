@@ -141,7 +141,7 @@ def preprocess_character_counts(episode, username, search_type, data_collector):
     count_all_terms_only = Counter()
 
     for tweet in tweet_list:
-
+        # Count all terms excluding stop words
         terms_stop = [term for term in preprocess(tweet['text'],
                                                   lowercase=True) if term not in stop]
         # Count hash tags only

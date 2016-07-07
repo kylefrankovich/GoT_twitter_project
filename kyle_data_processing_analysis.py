@@ -10,14 +10,9 @@ fName = os.path.join(data_path, fileName)
 
 from GoT_functions import tweet_loader, tweet_reducer
 
+# reduce data for later processing:
 
 tweet_reducer(fName, '10', 'search_48_hrs', 'kfranko', 'kyle')
-
-
-episode_1_search_tweets = tweet_loader(fName)
-
-len(episode_1_search_tweets[0])
-
 
 # do character counts:
 

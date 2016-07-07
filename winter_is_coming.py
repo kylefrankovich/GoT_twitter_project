@@ -18,10 +18,10 @@ of  character mentions, and to plot these numbers in reference to episode events
 import tweepy
 import datetime
 import yaml
+
 f = open('secrets.yaml')
 # use safe_load instead load
 API_info = yaml.safe_load(f)
-
 
 API_KEY = API_info['consumer_key']
 API_SECRET = API_info['consumer_secret']
@@ -30,7 +30,7 @@ API_SECRET = API_info['consumer_secret']
 auth = tweepy.AppAuthHandler(API_KEY, API_SECRET)
 
 api = tweepy.API(auth, wait_on_rate_limit=True,
-				   wait_on_rate_limit_notify=True)
+                 wait_on_rate_limit_notify=True)
 
 if (not api):
     print ("Can't Authenticate")
@@ -42,17 +42,21 @@ import sys
 import jsonpickle
 import os
 
-# searchQuery = '#someHashtag'  # this is what we're searching for
+####################################
+#### current search parameters: ####
+####################################
+
 searchQuery = '#gameofthrones'  # this is what we're searching for (search API is not case sensitive)
-# maxTweets = 10000000 # Some arbitrary large number
-maxTweets = 1000000 # Some arbitrary large number
+maxTweets = 1000000  # Some arbitrary large number
 tweetsPerQry = 100  # this is the max the API permits
 save_path = '/Users/kfranko/Box Sync/GoT_data/data'
 datestr = datetime.datetime.now().strftime("%Y_%m_%d-%H_%M_%S")
-fileName = 'GoT_search_ep10_48_hrs_{}.txt'.format(datestr) # We'll store the tweets in a text file.
-paramFileName = 'GoT_search_ep10_48_hrs_script_parameters_{}.txt'.format(datestr) # let's output the parameters used for each search in small text file
+fileName = 'GoT_search_ep10_48_hrs_{}.txt'.format(datestr)  # We'll store the tweets in a text file.
+paramFileName = 'GoT_search_ep10_48_hrs_script_parameters_{}.txt'.format(
+    datestr)  # let's output the parameters used for
+# each search in small text file
 fName = os.path.join(save_path, fileName)
-script_parameters_fName =os.path.join(save_path, paramFileName)
+script_parameters_fName = os.path.join(save_path, paramFileName)
 
 # 'since' and 'until' parameters can be used to restrict the timeframe of the search
 # Until - Returns tweets created before the given date. Date should be formatted as YYYY-MM-DD.
@@ -60,10 +64,10 @@ script_parameters_fName =os.path.join(save_path, paramFileName)
 # be found for a date older than one week.
 # Example Values: 2015-07-19
 
-
 search_from_date = '2016-06-26'
+search_to_date = '2016-06-28'  # will search up to beginning (midnight) of this date
 
-search_to_date = '2016-06-28' # will search up to beginning (midnight) of this date
+####################################
 
 # If results from a specific ID onwards are reqd, set since_id to that ID.
 # else default to no lower limit, go as far back as API allows
@@ -82,18 +86,19 @@ with open(fName, 'w') as f:
         try:
             if (max_id <= 0):
                 if (not sinceId):
-                    new_tweets = api.search(q=searchQuery, count=tweetsPerQry, since = search_from_date, until = search_to_date)
+                    new_tweets = api.search(q=searchQuery, count=tweetsPerQry, since=search_from_date,
+                                            until=search_to_date)
                 else:
                     new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
-                                            since_id=sinceId, since = search_from_date, until = search_to_date)
+                                            since_id=sinceId, since=search_from_date, until=search_to_date)
             else:
                 if (not sinceId):
                     new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
-                                            max_id=str(max_id - 1), since = search_from_date, until = search_to_date)
+                                            max_id=str(max_id - 1), since=search_from_date, until=search_to_date)
                 else:
                     new_tweets = api.search(q=searchQuery, count=tweetsPerQry,
                                             max_id=str(max_id - 1),
-                                            since_id=sinceId, since = search_from_date, until = search_to_date)
+                                            since_id=sinceId, since=search_from_date, until=search_to_date)
             if not new_tweets:
                 print("No more tweets found")
                 break
@@ -101,7 +106,7 @@ with open(fName, 'w') as f:
                 f.write(jsonpickle.encode(tweet._json, unpicklable=False) +
                         '\n')
             tweetCount += len(new_tweets)
-            #print("Downloaded {0} tweets".format(tweetCount)) # suppress this when downloading a billion tweets...
+            # print("Downloaded {0} tweets".format(tweetCount)) # suppress this when downloading a billion tweets...
             max_id = new_tweets[-1].id
         except tweepy.TweepError as e:
             # Just exit if any error
@@ -114,20 +119,17 @@ time_stop = datetime.datetime.now()
 total_runtime = time_stop - time_start
 print '\rtotal script runtime is:', total_runtime
 
-# output parameters of the search that was just completed:
+# output to a file the parameters of the search that was just completed:
 
 script_parameters_file = open(script_parameters_fName, "w")
 script_parameters_file.writelines(["search query: {0}\n".format(searchQuery),
-                "time start: {0}\n".format(time_start),
-                "time stop: {0}\n".format(time_stop),
-                "total run time: {0}\n".format(total_runtime),
-                "max tweets: {0}\n".format(maxTweets),
-                "output file name: {0}\n".format(fileName),
-                "search from date: {0}\n".format(search_from_date),
-                "search to date: {0}\n".format(search_to_date),
-                "number of tweets: {0}\n".format(tweetCount)]
-)
+                                   "time start: {0}\n".format(time_start),
+                                   "time stop: {0}\n".format(time_stop),
+                                   "total run time: {0}\n".format(total_runtime),
+                                   "max tweets: {0}\n".format(maxTweets),
+                                   "output file name: {0}\n".format(fileName),
+                                   "search from date: {0}\n".format(search_from_date),
+                                   "search to date: {0}\n".format(search_to_date),
+                                   "number of tweets: {0}\n".format(tweetCount)]
+                                  )
 script_parameters_file.close()
-
-# remaining issues: we need to set a time limit (i.e. search from time episode begins (or before it starts?) to 24 hours after);
-# also, can we automate the script to run on it's own?; ask Nick, perhaps we need to have the script running on a server...
