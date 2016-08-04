@@ -14,7 +14,7 @@ from GoT_functions import tweet_loader, tweet_reducer
 
 tweet_reducer(fName, '10', 'search_48_hrs', 'kfranko', 'kyle')
 
-# do character counts:
+# get character counts:
 
 from GoT_functions import preprocess_character_counts
 

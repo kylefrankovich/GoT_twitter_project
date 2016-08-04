@@ -4,6 +4,7 @@ library(ggplot2)
 library(plotly)
 library(tidyr)
 library(dplyr)
+library(rCharts)
 
 # if need to add most recent ep:
 setwd('/Users/kfranko/Box Sync/GoT_data/data/episode_5/')
@@ -34,6 +35,13 @@ df_ep1_ep5$count_percent_rounded = round(df_ep1_ep5$count_percent,2)
 write.csv(df_ep1_ep5, file = "df_eps1_5.csv")
 
 
+######
+
+
+
+
+
+
 # filter data to keep plot reasonable:
 
 character_threshold <- filter(df, count_percent > 5) 
@@ -54,7 +62,7 @@ episodes_1_5_plot<-ggplot(df_filtered,
        title = 'Character Mentions by Episode') +
   stat_summary(fun.y=mean,position=position_dodge(),geom="bar")
 
-ggplotly(episodes_1_4_plot)
+ggplotly(episodes_1_5_plot)
 
 # rCharts line plot of all characters w/ at least 5 percent of mentions
 # in at least one episode up to episode 5:
@@ -76,12 +84,11 @@ episodes_1_5_plot$save('character_counts_eps1_5_above_5_percent.html',
 
 
 
-# Brienne and Tormund line plot:
+#### Brienne and Tormund line plot:
 
 brienne_tormund = c('brienne', 'tormund')
 df_brienne_tormund = filter(df, names %in% brienne_tormund)
 
-brienne_tormund_ep_descriptions = c('Brienne saves Sansa')
 
 brienne_tormund_line_plot = ggplot(data=df_brienne_tormund, 
                                    aes(x=episode, y=count_percent_rounded, 
@@ -94,6 +101,7 @@ brienne_tormund_line_plot = ggplot(data=df_brienne_tormund,
 
 ggplotly(brienne_tormund_line_plot)
 
+# upload ggplot-style visualization to plotly account for posting to blog:
 plotly_POST(brienne_tormund_line_plot, 
             filename = "brienne_tormund_plot", world_readable=TRUE)
 
@@ -108,7 +116,6 @@ brienne.tormund.line.rcharts <- hPlot(x='episode',
 brienne.tormund.line.rcharts$yAxis(title = list(text = "percentage of mentions"))
 brienne.tormund.line.rcharts$xAxis(title = list(text = "episode"), 
                                     tickInterval = 1)
-# women.of.thrones.line.rcharts$xAxis(minorTicknterval = 'null')
 brienne.tormund.line.rcharts$plotOptions(series = list(lineWidth = 4))
 # Use this with 'Knit HTML' button
 # line.rcharts$print(include_assets=TRUE)
@@ -140,7 +147,7 @@ characters_of_interest_line_plot = ggplot(data=df_filtered_characters_of_interes
 ggplotly(characters_of_interest_line_plot)
 
 
-# women of thrones line plot:
+##### women of thrones line plot:
 
 character_list = c('brienne', 'sansa', 'daenerys',
                    'melisandre', 'cersei', 'margaery', 'arya')
@@ -188,6 +195,14 @@ women.of.thrones.line.rcharts$show('iframesrc', cdn=TRUE)
 women.of.thrones.line.rcharts$save('GoT_women_of_thrones_plot_v2_eps1_5.html',
                                    'iframesrc', 
                                    cdn=TRUE)
+
+
+
+
+
+
+
+
 
 # try methond from here: https://github.com/ramnathv/rCharts/issues/548
 
